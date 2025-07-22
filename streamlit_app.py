@@ -37,6 +37,7 @@ if ingredients_List:
         st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen.lower())
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width= True)
+        st.write(smoothiefroot_response)
    
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order) 
