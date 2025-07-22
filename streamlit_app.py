@@ -35,9 +35,10 @@ if ingredients_List:
     for fruit_chosen in ingredients_List:
         ingredients_string+=fruit_chosen+ ' '
         st.subheader(fruit_chosen + ' Nutrition Information')
-        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen.lower())
+        clean_fruit =  fruit_chosen[:-1].lower()
+        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/" + clean_fruit)
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width= True)
-        st.write(fruit_chosen.lower())
+        
    
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order) 
